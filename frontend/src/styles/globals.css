@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🦅 Harpia Theme */
+
+:root {
+  --harpia-blue: #0066FF;
+  --harpia-yellow: #FFCC00;
+  --harpia-red: #EF4444;
+  --harpia-green: #10B981;
+  --harpia-dark: #0F172A;
+  --harpia-darker: #020617;
+  --harpia-gray: #64748B;
+}
+
+body {
+  @apply bg-harpia-darker text-white font-sans antialiased;
+}
+
+/* ChatKit Customization */
+openai-chatkit {
+  --chatkit-primary-color: var(--harpia-blue);
+  --chatkit-background: var(--harpia-dark);
+  --chatkit-surface: #1E293B;
+  --chatkit-text: #F8FAFC;
+  --chatkit-text-secondary: #94A3B8;
+  --chatkit-border: #334155;
+  --chatkit-border-radius: 12px;
+}
+
+/* Cards */
+.harpia-card {
+  @apply bg-harpia-dark border border-harpia-gray/20 rounded-xl p-6;
+  @apply hover:border-harpia-blue/50 transition-all duration-300;
+}
+
+/* Buttons */
+.harpia-btn {
+  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-200;
+}
+
+.harpia-btn-primary {
+  @apply harpia-btn bg-harpia-blue text-white;
+  @apply hover:bg-blue-600 hover:shadow-lg hover:shadow-harpia-blue/25;
+}
+
+.harpia-btn-secondary {
+  @apply harpia-btn bg-transparent border border-harpia-gray text-white;
+  @apply hover:border-harpia-blue hover:text-harpia-blue;
+}
+
+/* Gradient Text */
+.harpia-gradient-text {
+  @apply bg-gradient-to-r from-harpia-blue via-harpia-yellow to-harpia-green;
+  @apply bg-clip-text text-transparent;
+}
+
+/* Glow Effects */
+.harpia-glow {
+  box-shadow: 0 0 40px rgba(0, 102, 255, 0.15);
+}
+
+.harpia-glow-yellow {
+  box-shadow: 0 0 40px rgba(255, 204, 0, 0.15);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 102, 255, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(0, 102, 255, 0.4); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-harpia-darker;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-harpia-gray/50 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-harpia-gray;
+}
