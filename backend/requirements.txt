@@ -4,8 +4,6 @@ uvicorn[standard]>=0.27.0
 
 # OpenAI
 openai>=1.50.0
-openai-agents>=0.1.0
-git+https://github.com/openai/chatkit-python.git
 
 # Supabase
 supabase>=2.0.0
