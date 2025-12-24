@@ -1,7 +1,7 @@
+import os
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from openai import OpenAI
-import os
 
 app = FastAPI(title="Harpia GEO")
 
@@ -24,23 +24,13 @@ async def chat(request: Request):
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
-            {"role": "system", "content": "Você é o Harpia, assistente de GEO."},
+            {"role": "system", "content": "Voce e o Harpia, assistente de GEO."},
             {"role": "user", "content": data.get("message", "")}
         ]
     )
     return {"response": response.choices[0].message.content}
 
-@app.post("/api/diagnostico")
-async def diagnostico(request: Request):
-    data = await request.json()
-    empresa = data.get("empresa")
-    site = data.get("site")
-    
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[
-            {"role": "system", "content": "Gere 20 prompts GEO para esta empresa."},
-            {"role": "user", "content": f"Empresa: {empresa}, Site: {site}"}
-        ]
-    )
-    return {"empresa": empresa, "prompts": response.choices[0].message.content}
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.getenv("PORT", 8080))
+    uvicorn.run(app, host="0.0.0.0", port=port)
